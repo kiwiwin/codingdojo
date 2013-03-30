@@ -9,8 +9,22 @@ public class TennisGame {
     public static void main(String[] args) {
         TennisGame game = createGame();
         while (!game.isFinish()) {
+            game.showCurrentScore();
             Scanner scanner = new Scanner(System.in);
             game.winBall(scanner.next());
+        }
+        game.declareWinner();
+    }
+
+    private void showCurrentScore() {
+        System.out.println(String.format("Seed: %s; Challenger: %s", seed.getScore(), challenger.getScore()));
+    }
+
+    private void declareWinner() {
+        if (seed.isWinner()) {
+            System.out.println("Winner is Seed");
+        } else {
+            System.out.println("Winner is challenger");
         }
     }
 

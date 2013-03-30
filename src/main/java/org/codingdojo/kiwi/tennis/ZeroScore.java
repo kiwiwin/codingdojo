@@ -6,6 +6,11 @@ public class ZeroScore extends Score {
     }
 
     @Override
+    public String toString() {
+        return String.valueOf(getPoints());
+    }
+
+    @Override
     public void winBall(Player player) {
         player.setScore(new FifteenScore());
     }

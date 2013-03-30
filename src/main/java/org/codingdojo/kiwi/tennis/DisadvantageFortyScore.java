@@ -6,6 +6,11 @@ class DisadvantageFortyScore extends Score {
     }
 
     @Override
+    public String toString() {
+        return String.valueOf(getPoints());
+    }
+
+    @Override
     public void winBall(Player player) {
         player.setScore(new DeuceFortyScore());
         player.getOpponent().setScore(new DeuceFortyScore());

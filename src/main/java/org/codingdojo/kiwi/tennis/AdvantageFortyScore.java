@@ -6,6 +6,11 @@ class AdvantageFortyScore extends Score {
     }
 
     @Override
+    public String toString() {
+        return "AD";
+    }
+
+    @Override
     public void winBall(Player player) {
         player.setWinner(true);
     }

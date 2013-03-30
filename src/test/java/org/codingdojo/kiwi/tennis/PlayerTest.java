@@ -30,6 +30,18 @@ public class PlayerTest {
     }
 
     @Test
+    public void player_deuce_with_component_after_win_the_ball_when_player_has_30_opponent_has_40() {
+        Player player = new Player(new ThirtyScore());
+        Player opponent = new Player(new LeadFortyScore());
+        player.setOpponent(opponent);
+
+        player.winBall();
+
+        assertThat(player.getScore(), instanceOf(DeuceFortyScore.class));
+        assertThat(opponent.getScore(), instanceOf(DeuceFortyScore.class));
+    }
+
+    @Test
     public void player_win_after_win_the_ball_when_points_is_40() {
         Player player = new Player(new LeadFortyScore());
         player.setOpponent(new Player(new ZeroScore()));
