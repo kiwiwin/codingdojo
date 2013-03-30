@@ -1,4 +1,4 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
 import java.util.*;
 

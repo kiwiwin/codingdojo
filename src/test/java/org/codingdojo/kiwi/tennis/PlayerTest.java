@@ -1,10 +1,10 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
 import org.junit.*;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class PlayerTest {
     @Test

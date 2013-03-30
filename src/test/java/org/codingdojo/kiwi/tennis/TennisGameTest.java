@@ -1,4 +1,4 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
 import org.junit.*;
 
@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class TennisGameTest {
-
     private Player seed;
     private TennisGame game;
     private Player challenger;

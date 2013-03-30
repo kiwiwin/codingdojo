@@ -1,4 +1,4 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
 public class ZeroScore extends Score {
     public ZeroScore() {

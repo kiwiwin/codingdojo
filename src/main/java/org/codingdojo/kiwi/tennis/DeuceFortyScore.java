@@ -1,4 +1,4 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
 class DeuceFortyScore extends Score {
     protected DeuceFortyScore() {

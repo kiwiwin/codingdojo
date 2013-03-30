@@ -1,4 +1,4 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
 public class ThirtyScore extends Score {
     public ThirtyScore() {

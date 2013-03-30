@@ -1,7 +1,7 @@
-package org.codingdojo.kiwi;
+package org.codingdojo.kiwi.tennis;
 
-class AdvantageFortyScore extends Score {
-    protected AdvantageFortyScore() {
+class LeadFortyScore extends Score {
+    protected LeadFortyScore() {
         super(40);
     }
 
