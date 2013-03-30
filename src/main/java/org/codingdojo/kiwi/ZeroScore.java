@@ -7,6 +7,6 @@ public class ZeroScore extends Score {
 
     @Override
     public void winBall(Player player) {
-        player.setPoints(15);
+        player.setScore(new FifteenScore());
     }
 }

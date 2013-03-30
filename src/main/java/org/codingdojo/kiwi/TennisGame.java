@@ -3,41 +3,41 @@ package org.codingdojo.kiwi;
 import java.util.*;
 
 public class TennisGame {
-    private Player playerA;
-    private Player playerB;
+    private Player seed;
+    private Player challenger;
 
     public static void main(String[] args) {
-        TennisGame game = new TennisGame();
+        TennisGame game = createGame();
         while (!game.isFinish()) {
             Scanner scanner = new Scanner(System.in);
             game.winBall(scanner.next());
         }
     }
 
-    public TennisGame() {
-        this.playerA = new Player(0);
-        this.playerB = new Player(0);
-        playerA.setOpponent(playerB);
-        playerB.setOpponent(playerA);
+    public static TennisGame createGame() {
+        Player seed = new Player(new ZeroScore());
+        Player challenger = new Player(new ZeroScore());
+        return new TennisGame(seed, challenger);
     }
 
-    public Player getPlayerA() {
-        return playerA;
-    }
-
-    public Player getPlayerB() {
-        return playerB;
+    public TennisGame(Player seed, Player challenger) {
+        this.seed = seed;
+        this.challenger = challenger;
+        seed.setOpponent(challenger);
+        challenger.setOpponent(seed);
     }
 
     public void winBall(String ballWinner) {
-        if (ballWinner.equals("A")) {
-            playerA.getScore().winBall(playerA);
+        if (ballWinner.equals("Seed")) {
+            seed.winBall();
+        } else if (ballWinner.equals("Challenger")) {
+            challenger.winBall();
         } else {
-            playerB.getScore().winBall(playerB);
+            throw new IllegalArgumentException("Invalid Player");
         }
     }
 
     public boolean isFinish() {
-        return playerA.isWinner() || playerB.isWinner();
+        return seed.isWinner() || challenger.isWinner();
     }
 }

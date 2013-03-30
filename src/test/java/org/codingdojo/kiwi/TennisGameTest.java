@@ -2,38 +2,48 @@ package org.codingdojo.kiwi;
 
 import org.junit.*;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.Is.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class TennisGameTest {
-    @Test
-    public void two_players_begin_with_0_points() {
-        TennisGame game = new TennisGame();
-        assertThat(game.getPlayerA().getPoints(), is(0));
-        assertThat(game.getPlayerB().getPoints(), is(0));
+
+    private Player seed;
+    private TennisGame game;
+    private Player challenger;
+
+    @Before
+    public void setUp() throws Exception {
+        seed = new Player(new ZeroScore());
+        challenger = new Player(new ZeroScore());
+        game = new TennisGame(seed, challenger);
     }
 
     @Test
     public void A_win_ball_when_input_is_A() {
-        TennisGame game = new TennisGame();
-        game.winBall("A");
-        assertThat(game.getPlayerA().getPoints(), is(15));
+        Player mockSeed = mock(Player.class);
+        game = new TennisGame(mockSeed, challenger);
+
+        game.winBall("Seed");
+
+        verify(mockSeed).winBall();
     }
 
     @Test
     public void B_win_ball_when_input_is_B() {
-        TennisGame game = new TennisGame();
-        game.winBall("B");
-        assertThat(game.getPlayerB().getPoints(), is(15));
+        Player mockChallenger = mock(Player.class);
+        game = new TennisGame(seed, mockChallenger);
+
+        game.winBall("Challenger");
+
+        verify(mockChallenger).winBall();
     }
 
     @Test
     public void game_finish_when_one_player_win_the_game() {
-        TennisGame game = new TennisGame();
-        game.winBall("A");
-        game.winBall("A");
-        game.winBall("A");
-        game.winBall("A");
+        seed.setScore(new LeadFortyScore());
+        game.winBall("Seed");
+
         assertThat(game.isFinish(), is(true));
     }
 }

@@ -1,24 +1,19 @@
 package org.codingdojo.kiwi;
 
 public class Player {
-    private int points;
     private Boolean isWinner;
     private Player opponent;
     private Boolean hasAdvantage;
     private Score score;
 
-    public Player(int points) {
-        this.setPoints(points);
+    public Player(Score score) {
         setWinner(false);
         setHasAdvantage(false);
+        setScore(score);
     }
 
     public int getPoints() {
-        return points;
-    }
-
-    public void lostAdvantage() {
-        this.setHasAdvantage(false);
+        return score.getPoints();
     }
 
     public Boolean isWinner() {
@@ -31,11 +26,6 @@ public class Player {
 
     public Boolean hasAdvantage() {
         return getHasAdvantage();
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-        this.setScore(Score.createScore(points));
     }
 
     public Boolean getWinner() {
