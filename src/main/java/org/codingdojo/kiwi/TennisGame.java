@@ -31,9 +31,9 @@ public class TennisGame {
 
     public void winBall(String ballWinner) {
         if (ballWinner.equals("A")) {
-            playerA.winBall();
+            playerA.getScore().winBall(playerA);
         } else {
-            playerB.winBall();
+            playerB.getScore().winBall(playerB);
         }
     }
 

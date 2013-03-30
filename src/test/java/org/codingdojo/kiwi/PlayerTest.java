@@ -58,7 +58,7 @@ public class PlayerTest {
         Player opponent = new Player(40);
         player.setOpponent(opponent);
         opponent.setOpponent(player);
-        opponent.winBall();
+        opponent.getScore().winBall(opponent);
         player.winBall();
         assertThat(opponent.hasAdvantage(), is(false));
     }

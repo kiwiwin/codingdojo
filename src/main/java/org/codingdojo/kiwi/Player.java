@@ -5,45 +5,24 @@ public class Player {
     private Boolean isWinner;
     private Player opponent;
     private Boolean hasAdvantage;
+    private Score score;
 
     public Player(int points) {
-        this.points = points;
-        isWinner = false;
-        hasAdvantage = false;
+        this.setPoints(points);
+        setWinner(false);
+        setHasAdvantage(false);
     }
 
     public int getPoints() {
         return points;
     }
 
-    public void winBall() {
-        if (points == 0) {
-            points = 15;
-        } else if (points == 15) {
-            points = 30;
-        } else if (points == 30) {
-            points = 40;
-        } else if (points == 40) {
-            if (opponent.hasAdvantage()) {
-                opponent.lostAdvantage();
-            } else {
-                if (hasAdvantage) {
-                    isWinner = true;
-                } else if (opponent.getPoints() == 40) {
-                    hasAdvantage = true;
-                } else {
-                    isWinner = true;
-                }
-            }
-        }
-    }
-
-    private void lostAdvantage() {
-        this.hasAdvantage = false;
+    public void lostAdvantage() {
+        this.setHasAdvantage(false);
     }
 
     public Boolean isWinner() {
-        return isWinner;
+        return getWinner();
     }
 
     public void setOpponent(Player opponent) {
@@ -51,6 +30,43 @@ public class Player {
     }
 
     public Boolean hasAdvantage() {
+        return getHasAdvantage();
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+        this.setScore(Score.createScore(points));
+    }
+
+    public Boolean getWinner() {
+        return isWinner;
+    }
+
+    public void setWinner(Boolean winner) {
+        isWinner = winner;
+    }
+
+    public Player getOpponent() {
+        return opponent;
+    }
+
+    public Boolean getHasAdvantage() {
         return hasAdvantage;
+    }
+
+    public void setHasAdvantage(Boolean hasAdvantage) {
+        this.hasAdvantage = hasAdvantage;
+    }
+
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    public void winBall() {
+        score.winBall(this);
     }
 }
